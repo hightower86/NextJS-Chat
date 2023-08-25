@@ -1,6 +1,8 @@
 import { Icon, Icons } from '@/components/Icons';
+import SignOutButton from '@/components/SignOutButton';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FC, ReactNode } from 'react';
@@ -50,7 +52,7 @@ const Layout: FC<LayoutProps> = async ({ children }) => {
                     Your chats
                 </div>
                 <nav className="flex flex-1 flex-col">
-                    <ul role="list" className="fle flex-1 flex-col gap-y-7">
+                    <ul role="list" className="flex flex-1 flex-col gap-y-7">
                         <li> chats that this user has</li>
                         <li>
                             <div className="text-xs font-semibold leading-6 text-gray-400">
@@ -78,6 +80,34 @@ const Layout: FC<LayoutProps> = async ({ children }) => {
                                     );
                                 })}
                             </ul>
+                        </li>
+                        <li className="-mx-6 mt-auto flex items-center">
+                            <div className="flex flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900">
+                                <div className="relative h-6 w-6 bg-gray-50">
+                                    <Image
+                                        fill
+                                        referrerPolicy="no-referrer"
+                                        className="rounded-full"
+                                        src={session.user.image || ''}
+                                        alt="Your profile photo"
+                                    />
+                                </div>
+                                <span className="sr-only">
+                                    Your profile photo
+                                </span>
+                                <div className="flex flex-col">
+                                    <span aria-hidden="true">
+                                        {session.user.name}
+                                    </span>
+                                    <span
+                                        className="text-xs text-zinc-400"
+                                        aria-hidden="true"
+                                    >
+                                        {session.user.email}
+                                    </span>
+                                </div>
+                            </div>
+                            <SignOutButton className="h-full aspect-square" />
                         </li>
                     </ul>
                 </nav>
