@@ -1,5 +1,7 @@
+import FriendReaquestsSidebarOption from '@/components/FriendReaquestsSidebarOption';
 import { Icon, Icons } from '@/components/Icons';
 import SignOutButton from '@/components/SignOutButton';
+import { fetchRedis } from '@/helpers/redis';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import Image from 'next/image';
@@ -37,6 +39,13 @@ const Layout: FC<LayoutProps> = async ({ children }) => {
     const session = await getServerSession(authOptions);
 
     if (!session) notFound();
+
+    const unseenRequestsCount = (
+        (await fetchRedis(
+            'smembers',
+            `user:${session.user.id}:incoming_friend_requests`
+        )) as User[]
+    ).length;
 
     return (
         <div className="w-full flex h-screen">
@@ -80,6 +89,12 @@ const Layout: FC<LayoutProps> = async ({ children }) => {
                                     );
                                 })}
                             </ul>
+                        </li>
+                        <li>
+                            <FriendReaquestsSidebarOption
+                                sessionId={session.user.id}
+                                initialUnseenRequestsCount={unseenRequestsCount}
+                            />
                         </li>
                         <li className="-mx-6 mt-auto flex items-center">
                             <div className="flex flex-1 items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900">
