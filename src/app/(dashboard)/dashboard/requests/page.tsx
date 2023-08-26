@@ -22,15 +22,12 @@ const page: FC = async () => {
                 `user:${senderId}`
             )) as string;
             const parsedSender = JSON.parse(sender) as User;
-            console.log({ parsedSender });
             return {
                 senderId,
                 senderEmail: parsedSender?.email,
             };
         })
     );
-
-    console.log({ incomingFriendRequests });
 
     return (
         <main className="pt-8">
