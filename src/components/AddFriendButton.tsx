@@ -41,18 +41,15 @@ const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
             setShowSuccessState(true);
         } catch (error) {
             if (error instanceof z.ZodError) {
-                debugger;
                 setError('email', { message: error.message });
                 return;
             }
 
             if (error instanceof AxiosError) {
-                debugger;
                 setError('email', { message: error.response?.data });
                 // setError('email', { message: error.message });
                 return;
             }
-            debugger;
             setError('email', { message: 'Something went wrong' });
         }
     };
@@ -70,9 +67,9 @@ const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
                 Add friend by E-Mail
             </label>
 
-            <div className="mt-2 flex gap-4">
+            <div className="mt-2 flex ">
                 <input
-                    className="block w-full rounded-md py-1.5 text-gray-900 shadow-md ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
+                    className="mr-4 block w-full rounded-md py-1.5 text-gray-900 shadow-md ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-400 sm:text-sm sm:leading-6"
                     {...register('email')}
                     type="email"
                     placeholder="you@example.com"

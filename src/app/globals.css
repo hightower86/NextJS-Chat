@@ -78,6 +78,9 @@
         @apply bg-background text-foreground;
         font-feature-settings: 'rlig' 1, 'calt' 1;
     }
+    container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
 }
 
 .scrollbar-w-2::-webkit-scrollbar {
