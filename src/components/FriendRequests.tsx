@@ -72,10 +72,7 @@ const FriendRequests: FC<FriendRequestsProps> = ({
 
             {friendRequests.length > 0 &&
                 friendRequests.map((friendRequest) => (
-                    <div
-                        key={friendRequest.senderId}
-                        className="flex justify-between gap-4"
-                    >
+                    <div key={friendRequest.senderId} className="flex gap-4">
                         <UserPlus className="h-6 w-6 text-black" />
                         <p className="font-medium text-lg">
                             {friendRequest.senderEmail}
