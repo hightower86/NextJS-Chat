@@ -47,7 +47,7 @@ export async function POST(req: Request) {
             'get',
             `user:${session.user.id}`
         );
-        const sender = JSON.parse(rawSender);
+        const sender: User = JSON.parse(rawSender);
 
         const timeStamp = Date.now();
 
@@ -62,10 +62,21 @@ export async function POST(req: Request) {
         const message = messageValidator.parse(messageData);
 
         // notify all connected chat room clients
-        pusherServer.trigger(
+        await pusherServer.trigger(
             toPusherKey(`chat:${chatId}`),
-            'incoming-message',
+            'incoming_message',
             message
+        );
+
+        await pusherServer.trigger(
+            toPusherKey(`user:${friendId}:chats`),
+            'new_message',
+            {
+                // notify the friend
+                ...message,
+                senderImg: sender.image,
+                senderName: sender.name,
+            }
         );
 
         // all valid, send the message
