@@ -1,5 +1,6 @@
 import FriendReaquestsSidebarOption from '@/components/FriendReaquestsSidebarOption';
 import { Icon, Icons } from '@/components/Icons';
+import MobileChatLayout from '@/components/MobileChatLayout';
 import SidebarChatList from '@/components/SidebarChatList';
 import SignOutButton from '@/components/SignOutButton';
 import { getFriendsByUserId } from '@/helpers/get-friends-by-user-id';
@@ -29,12 +30,12 @@ const sidebarOptions: SidebarOption[] = [
         href: '/dashboard/add',
         Icon: 'UserPlus',
     },
-    {
-        id: 1,
-        name: 'Remove friend',
-        href: '/dashboard/remove',
-        Icon: 'UserPlus',
-    },
+    // {
+    //     id: 1,
+    //     name: 'Remove friend',
+    //     href: '/dashboard/remove',
+    //     Icon: 'UserPlus',
+    // },
 ];
 
 const Layout: FC<LayoutProps> = async ({ children }) => {
@@ -53,6 +54,14 @@ const Layout: FC<LayoutProps> = async ({ children }) => {
 
     return (
         <div className="w-full flex h-screen">
+            <div className="md:hidden">
+                <MobileChatLayout
+                    friends={friends}
+                    session={session}
+                    sidebarOptions={sidebarOptions}
+                    unseenRequestCount={unseenRequestsCount}
+                />
+            </div>
             <div className="hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
                 <Link
                     href="/dashboard"
