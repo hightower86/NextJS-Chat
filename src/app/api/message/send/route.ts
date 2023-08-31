@@ -9,7 +9,6 @@ import { toPusherKey } from '@/lib/utils';
 
 export async function POST(req: Request) {
     try {
-        console.log('I am in ...');
         const { text, chatId } = await req.json();
         const session = await getServerSession(authOptions);
 
