@@ -39,9 +39,8 @@ const FriendReaquestsSidebarOption: FC<FriendReaquestsSidebarOptionProps> = ({
                 friendRequestHandler
             );
         };
-    }, []);
+    }, [sessionId]);
 
-    console.log({ unseenRequestsCount });
     return (
         <Link
             href="/dashboard/requests"
