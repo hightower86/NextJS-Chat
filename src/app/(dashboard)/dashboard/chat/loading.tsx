@@ -56,7 +56,7 @@ const loading: FC<loadingProps> = ({}) => {
                                         <div className="flex flex-row items-center">
                                             <div className="relative h-10 w-10">
                                                 <Skeleton
-                                                    width={40}
+                                                    width={100}
                                                     height={40}
                                                     borderRadius={999}
                                                 />
