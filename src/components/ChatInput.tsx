@@ -63,6 +63,7 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
                             isLoading={isLoading}
                             onClick={sendMessage}
                             type="submit"
+                            className=" bg-gray-500 hover:bg-indigo-700"
                         >
                             Post
                         </Button>
