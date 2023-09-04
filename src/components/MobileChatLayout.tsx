@@ -7,12 +7,12 @@ import Link from 'next/link';
 import { FC, Fragment, useEffect, useState } from 'react';
 import { Icons } from './Icons';
 import SignOutButton from './SignOutButton';
-import Button, { buttonVariants } from './ui/Button';
 import SidebarChatList from './SidebarChatList';
 import { Session } from 'next-auth';
 import { usePathname } from 'next/navigation';
 import FriendReaquestsSidebarOption from './FriendReaquestsSidebarOption';
 import { SidebarOption } from '@/types/typings';
+import Button, { buttonVariants } from './ui/Button';
 
 interface MobileChatLayoutProps {
     friends: User[];

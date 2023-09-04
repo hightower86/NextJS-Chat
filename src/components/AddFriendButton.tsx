@@ -1,12 +1,12 @@
 'use client';
 
 import { FC, useEffect, useState } from 'react';
-import Button from './ui/Button';
 import { addFriendValidator } from '@/lib/validations/addFriend';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import axios, { AxiosError } from 'axios';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Button from './ui/Button';
 
 interface AddFriendButtonProps {}
 
