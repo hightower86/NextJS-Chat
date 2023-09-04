@@ -3,9 +3,9 @@
 import { FC, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
-import Button from '@/components/ui/Button';
 import GoogleIcon from '@/assets/icons/google.svg';
 import { Loader2 } from 'lucide-react';
+import Button from '@/components/ui/Button';
 
 const Page: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
