@@ -66,6 +66,7 @@ const page: FC<PageProps> = async ({ params }) => {
                                 src={chatPartner.image || ''}
                                 alt={`${chatPartner.name} profile picture`}
                                 className="rounded-full"
+                                sizes=""
                             />
                         </div>
                     </div>

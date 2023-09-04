@@ -66,6 +66,7 @@ const page = async ({}) => {
                                         alt={`${friend.name} profile picture`}
                                         src={friend.image || ''}
                                         fill
+                                        sizes=""
                                     />
                                 </div>
                             </div>
